@@ -80,12 +80,11 @@ class ChatBot:
 
         session = await self._ensure_session()
 
-        if context is not None:
-            context = []
-        elif id is not None:
-            context = await self._context.push(id, text)
-        else:
-            context = []
+        if context is None:
+            if id is None:
+                context = []
+            else:
+                context = await self._context.push(id, text)
 
         data = {
             "text": text,

@@ -28,7 +28,7 @@ from .chatbot import ChatBot
 from .context import Context, NoContext
 from .response import Response
 
-__version__ = "0.0.1a0"
+__version__ = "0.0.2a0"
 __author__ = "Eugene Ershov"
 
 __all__ = (

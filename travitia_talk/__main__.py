@@ -41,7 +41,7 @@ async def main() -> None:
             await prompt(bot)
         except tt.APIError as e:
             print(f"error: {e}")
-        except KeyboardInterrupt:
+        except (KeyboardInterrupt, EOFError):
             await bot.close()
 
             break
