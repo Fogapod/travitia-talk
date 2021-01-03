@@ -100,10 +100,15 @@ class ChatBot:
                     data = {}
                     log.error(f"Error reading error data: {e}")
 
-                if "response" not in data:
+                # API is inconsistent with responses
+                if "response" in data:
+                    error = data["response"]
+                elif "error" in data:
+                    error = data["error"]
+                else:
                     raise UnknownAPIError("Bad response from server", status=r.status)
 
-                raise APIError(data["response"], status=r.status)
+                raise APIError(error, status=r.status)
 
             return Response.from_data(await r.json(), emotion, context)
 

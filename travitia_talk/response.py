@@ -58,4 +58,4 @@ class Response:
         return self.text
 
     def __repr__(self) -> str:
-        return f"<{self.__class__.__name__} status= {self.status} text={self.text} emotion={self.emotion} context={self.context}>"
+        return f"<{self.__class__.__name__} status={self.status} text={self.text} emotion={self.emotion} context={self.context}>"
