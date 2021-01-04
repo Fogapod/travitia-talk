@@ -28,6 +28,7 @@ from typing import Any, Optional, Sequence
 
 from aiohttp import ClientSession
 
+from . import __version__
 from .enums import Emotion
 from .errors import APIError, UnknownAPIError
 from .context import Context, InMemoryContext
@@ -44,6 +45,7 @@ class ChatBot:
         token: str,
         *,
         api_url: str = "https://public-api.travitia.xyz/talk",
+        user_agent: Optional[str] = None,
         session: Optional[ClientSession] = None,
         context: Optional[Context] = None,
     ):
@@ -53,7 +55,14 @@ class ChatBot:
         self._session = session
         self._context = InMemoryContext() if context is None else context
 
-        self._headers = {"authorization": token}
+        repo_url = "https://github.com/Fogapod/travitia-talk"
+
+        self._headers = {
+            "authorization": self._token,
+            "user-agent": f"TravitiaTalk {__version__}: {repo_url}"
+            if user_agent is None
+            else user_agent,
+        }
 
     async def _ensure_session(self) -> ClientSession:
         if self._session is None:

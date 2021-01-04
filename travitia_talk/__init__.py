@@ -22,14 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+__version__ = "0.0.2a0"
+__author__ = "Eugene Ershov"
+
 from .enums import Emotion
 from .errors import APIError, UnknownAPIError
 from .chatbot import ChatBot
 from .context import Context, NoContext
 from .response import Response
-
-__version__ = "0.0.2a0"
-__author__ = "Eugene Ershov"
 
 __all__ = (
     "Emotion",
