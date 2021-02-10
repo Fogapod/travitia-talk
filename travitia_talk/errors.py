@@ -33,4 +33,4 @@ class APIError(Exception):
 
 
 class UnknownAPIError(APIError):
-    """Raised when it is not pissible to get error reason"""
+    """Raised when it is not possible to get error reason"""
